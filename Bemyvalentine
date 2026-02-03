@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🎀 Shae, Will You Be My Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: "Poppins", "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #ffd1e8, #ff9fcf);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      padding: 3rem 2.5rem;
+      border-radius: 28px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    /* HELLO KITTY FACE */
+    .kitty {
+      position: relative;
+      width: 120px;
+      height: 100px;
+      background: #fff;
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+    }
+
+    .eye {
+      position: absolute;
+      width: 10px;
+      height: 14px;
+      background: #333;
+      border-radius: 50%;
+      top: 45px;
+    }
+
+    .eye.left { left: 30px; }
+    .eye.right { right: 30px; }
+
+    .nose {
+      position: absolute;
+      width: 12px;
+      height: 8px;
+      background: #f7b7c6;
+      border-radius: 50%;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bow {
+      position: absolute;
+      top: -20px;
+      right: 15px;
+      width: 30px;
+      height: 20px;
+      background: #ff4f8b;
+      border-radius: 4px;
+    }
+
+    .bow::before,
+    .bow::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #ff4f8b;
+      border-radius: 50%;
+      top: 1px;
+    }
+
+    .bow::before { left: -12px; }
+    .bow::after { right: -12px; }
+
+    h1 {
+      color: #ff4f8b;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 0.85rem 1.9rem;
+      font-size: 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    #yesBtn {
+      background: #ff4f8b;
+      color: white;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+      background: #ff2f75;
+    }
+
+    #noBtn {
+      background: #ffe3ef;
+      color: #ff4f8b;
+    }
+
+    #noBtn:hover {
+      background: #ffc1da;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <div class="kitty">
+      <div class="bow"></div>
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="nose"></div>
+    </div>
+
+    <h1>Shae, will you be my Valentine? 🎀</h1>
+    <p>
+      You make everything feel softer, sweeter,
+      and happier just by being you 🥰  
+      I’d really love to spend Valentine’s Day with you.
+    </p>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes 💕</button>
+      <button id="noBtn">Hmm… 🤍</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const card = document.getElementById("card");
+
+    const messages = [
+      "Are you suuure? 🥺",
+      "I’ll be extra cute 🎀",
+      "Hello Kitty would say yes 🐱💗",
+      "Pretty please, Shae? 💕",
+      "Okay… one last try 😌"
+    ];
+
+    let clicks = 0;
+
+    noBtn.addEventListener("click", () => {
+      if (clicks < messages.length) {
+        noBtn.textContent = messages[clicks];
+        clicks++;
+      } else {
+        noBtn.textContent = "Okay… yes 💖";
+        noBtn.style.background = "#ff4f8b";
+        noBtn.style.color = "white";
+        noBtn.onclick = () => yesBtn.click();
+      }
+    });
+
+    yesBtn.addEventListener("click", () => {
+      card.innerHTML = `
+        <h1>YAY!!! 🎀💗</h1>
+        <p>
+          I’m really, really lucky to have you, Shae 🥰  
+          Thank you for being you.
+          <br/><br/>
+          Happy Valentine’s Day 💕
+        </p>
+      `;
+    });
+  </script>
+
+</body>
+</html>
